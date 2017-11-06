@@ -43,6 +43,8 @@
 \maketitle
 \newpage
 
+\tableofcontents
+
 \section{Algorithms}
 
 
@@ -136,7 +138,10 @@ We can calculate values of distance as follows:
 
 
 \subsection{Kruskal's algorithm}
-... TODO Kruskal's algorithm...
+Kruskal’s algorithm for creating a minimum spanning tree, the initial spanning tree only contains the nodes of the graph and does not contain any edges. Then the algorithm goes through the edges ordered by their weights, and always adds an edge to the tree if it does not create a cycle.
+
+
+... TODO add more
 
 
 \subsection{Prim's algorithm}
@@ -144,8 +149,12 @@ We can calculate values of distance as follows:
 
 
 \subsection{Convex hull}
-Finds the convex hull of the set of points in $\mathcal{O}(n\log{}n)$ time
+Andrew’s algorithm provides an easy way to construct the convex hull for a set of points in $O(n log n)$ time. The algorithm first locates the leftmost and rightmost points, and then constructs the convex hull in two parts: first the upper hull and then the lower hull. Both parts are similar, so we can focus on constructing the upper hull.
+
+First, we sort the points primarily according to x coordinates and secondarily according to y coordinates. After this, we go through the points and add each point to the hull. Always after adding a point to the hull, we make sure that the last line segment in the hull does not turn left. As long as it turns left, we repeatedly remove the second last point from the hull.
 \lstinputlisting{Code/ConvexHull.java}
+
+
 \section{Java structures}
 
 \subsection{java.util.Stack}
