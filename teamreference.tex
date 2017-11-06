@@ -143,7 +143,24 @@ We can calculate values of distance as follows:
 
 
 \subsection{Quicksort}
-... TODO quicksort ...
+\begin{lstlisting}
+// assuming num is non-empty, passing l = start index, h = end index
+int i = l, j = h;
+int p = num[((h - l) + l) / 2)];
+while (i <= j) {
+  while (num[i] < p) i++;
+  while (num[j] > p) j--;
+  if (i <= j) {
+      swap(i, j);
+      i++; j--;
+  }
+  if (l < j) {
+    quicksort(l, j);
+  } else if (i < h) {
+    quicksort(i, h);
+  }
+}
+\end{lstlisting}
 
 
 \subsection{Dijkstra}
