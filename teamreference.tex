@@ -38,7 +38,6 @@
 \title{Team Reference Document}
 \author{The University of Manchester - Spirit Monkeys}
 
-
 \begin{document}
 
 \maketitle
@@ -95,21 +94,7 @@ The idea is to always select the next possible event that ends as early as possi
 
 
 \subsection{Longest increasing subsequence}
-\begin{lstlisting}
-// assuming nums is nonempty
-int[] max = new int[nums.length];
-Arrays.fill(max, 1);
-
-int result = 1;
-for(int i = 0; i < nums.length; i++){
-  for (int j = 0; j < i; j++) {
-    if (nums[i] > nums[j]) {
-      max[i] = Math.max(max[i], max[j] + 1);
-    }
-  }
-  result = Math.max(max[i], result);
-}
-\end{lstlisting}
+\lstinputlisting{Code/LongestIncreasingSubSeq.java}
 
 
 \subsection{Edit/Levenshtein distance}
@@ -143,7 +128,7 @@ We can calculate values of distance as follows:
 
 
 \subsection{Quicksort}
-... TODO quicksort ...
+\lstinputlisting{Code/Quicksort.java}
 
 
 \subsection{Dijkstra}
@@ -159,41 +144,28 @@ We can calculate values of distance as follows:
 
 
 \subsection{Convex hull}
-... TODO add Convex Hull...
-
-
-
-
+Finds the convex hull of the set of points in $\mathcal{O}(n\log{}n)$ time
+\lstinputlisting{Code/ConvexHull.java}
 \section{Java structures}
 
 \subsection{java.util.Stack}
-The Stack class represents a last-in-first-out (LIFO) stack of objects. It extends class Vector with five operations that allow a vector to be treated as a stack. The usual push and pop operations are provided, as well as a method to peek at the top item on the stack, a method to test for whether the stack is empty, and a method to search the stack for an item and discover how far it is from the top.
+Stack is LIFO. It includes commands such as, push, pop, peek, isEmpty and can search for items to return positions or the data itself (just like a list) i.e.\ .contains() .get(i)
 
 \subsection{java.util.PriorityQueue}
-An unbounded priority queue based on a priority heap. The elements of the priority queue are ordered according to their natural ordering, or by a Comparator provided at queue construction time, depending on which constructor is used. A priority queue does not permit null elements. A priority queue relying on natural ordering also does not permit insertion of non-comparable objects (doing so may result in ClassCastException).
+An unbounded priority queue based on a priority heap. Following are the important points about PriorityQueue:
+\begin{itemize}
+  \item The elements of the priority queue are ordered according to their natural ordering, or by a Comparator provided at queue construction time, depending on which constructor is used.
+  \item A priority queue does not permit null elements.
+  \item A priority queue relying on natural ordering also does not permit insertion of non-comparable objects.
+  \item For ordered traversal use \textit{$Arrays.sort(pq.toArray())$}.
+\end{itemize}
+Note: Implement \textit{$Comparable<T>$} for the class T
 
-The head of this queue is the least element with respect to the specified ordering. If multiple elements are tied for least value, the head is one of those elements -- ties are broken arbitrarily. The queue retrieval operations poll, remove, peek, and element access the element at the head of the queue.
-
-A priority queue is unbounded, but has an internal capacity governing the size of an array used to store the elements on the queue. It is always at least as large as the queue size. As elements are added to a priority queue, its capacity grows automatically. The details of the growth policy are not specified.
-
-This class and its iterator implement all of the optional methods of the Collection and Iterator interfaces. The Iterator provided in method iterator() is not guaranteed to traverse the elements of the priority queue in any particular order. If you need ordered traversal, consider using Arrays.sort(pq.toArray()).
-
-Note that this implementation is not synchronized. Multiple threads should not access a PriorityQueue instance concurrently if any of the threads modifies the queue. Instead, use the thread-safe PriorityBlockingQueue class.
-
-Implementation note: this implementation provides O(log(n)) time for the enqueuing and dequeuing methods (offer, poll, remove() and add); linear time for the remove(Object) and contains(Object) methods; and constant time for the retrieval methods (peek, element, and size).
+Time Complexity: $\mathcal{O}(\log{}n)$ time for the enque/deque; $\mathcal{O}(n)$ for the remove/contains; constant time for the retrieval.
 
 \subsection{java.util.ArrayDeque}
 Resizable-array implementation of the Deque interface. Array deques have no capacity restrictions; they grow as necessary to support usage. They are not thread-safe; in the absence of external synchronization, they do not support concurrent access by multiple threads. Null elements are prohibited. This class is likely to be faster than Stack when used as a stack, and faster than LinkedList when used as a queue.
 
 Most ArrayDeque operations run in amortized constant time. Exceptions include remove, removeFirstOccurrence, removeLastOccurrence, contains, iterator.remove(), and the bulk operations, all of which run in linear time.
-
-\subsection{java.util.PriorityQueue}
-The java.util.PriorityQueue class is an unbounded priority queue based on a priority heap.Following are the important points about PriorityQueue:
-\begin{itemize}
-  \item The elements of the priority queue are ordered according to their natural ordering, or by a Comparator provided at queue construction time, depending on which constructor is used.
-  \item A priority queue does not permit null elements.
-  \item A priority queue relying on natural ordering also does not permit insertion of non-comparable objects.
-\end{itemize}
-Note: Implement \textit{$Comparable<T>$} for the class T.
 
 \end{document}
